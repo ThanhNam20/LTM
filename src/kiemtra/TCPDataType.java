@@ -3,11 +3,11 @@ package kiemtra;
 import java.io.*;
 import java.net.Socket;
 
-public class Client {
+public class TCPDataType {
     private int port;
     private String address;
 
-    public Client(int port, String address) {
+    public TCPDataType(int port, String address) {
         this.port = port;
         this.address = address;
     }
@@ -15,7 +15,7 @@ public class Client {
     private void execute() throws IOException {
         Socket socket = new Socket(address, port);
 
-        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(socket.getInputStream()));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
         String msv = "B18DCAT166;721";
@@ -29,8 +29,8 @@ public class Client {
         socket.close();
     }
     public static void main(String[] args) throws IOException {
-        Client client = new Client(2208, "203.162.10.109");
-        client.execute();
+        TCPDataType TCPDataType = new TCPDataType(2208, "203.162.10.109");
+        TCPDataType.execute();
     }
 
 }
